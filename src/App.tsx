@@ -30,20 +30,8 @@ function NavBar() {
 function Footer() {
     return (
         <div className="App-footer">
-            <footer>
                 <hr />
             <p>Made by Nathan Lee</p>
-            </footer>
-        </div>
-    );
-}
-function StickyFooter() {
-    return (
-        <div className="App-footer sticky">
-            <footer>
-                <hr />
-                <p>Made by Nathan Lee</p>
-            </footer>
         </div>
     );
 }
@@ -51,6 +39,7 @@ function StickyFooter() {
 export function App() {
   return (
     <div className="App">
+        <div className={"App-content"}>
         <TopHeader />
         <div className="App-nav">
             <nav>
@@ -86,13 +75,15 @@ export function App() {
                 <li>Go to <a href="/blog">My Blog</a> if you want to see some of my blog posts. I also post tutorials on there too.</li>
             </ul>
         </div>
-        <StickyFooter />
+        </div>
+        <Footer />
     </div>
   );
 }
 export function About() {
     return (
         <div className="App">
+            <div className={"App-content"}>
             <TopHeader />
             <div className="App-nav">
                 <nav>
@@ -131,6 +122,7 @@ export function About() {
                     <p><br />Read more about my academic and musical journey on my <a href="/blog" target="/">blog</a>!</p>
                 </section>
             </div>
+            </div>
             <Footer />
         </div>
     );
@@ -145,7 +137,7 @@ export function NotFound() {
                 <h2>Try checking the spelling, or go to the <a href="/">home page</a> to navigate!</h2>
                 <img src="https://http.cat/404" alt="404 Not Found" />
             </div>
-            <StickyFooter />
+            <Footer />
         </div>
     );
 }
@@ -192,7 +184,7 @@ export function Projects() {
                     </p>
                 </section>
             </div>
-            <StickyFooter />
+            <Footer />
         </div>
     )
 }
@@ -206,7 +198,7 @@ export function WIP() {
                 <h2>Congratulations, you found this page, which is a work in progress!</h2>
                 <h3><a href="/">Take me home</a></h3>
             </div>
-            <StickyFooter />
+            <Footer />
         </div>
     );
 }
