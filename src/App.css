@@ -1,38 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;400&display=swap');
+html {
+    background-color: black;
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+}
 .App {
-  text-align: center;
+    font-family: 'Source Code Pro', monospace;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App-body {
+    padding-left: 10%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
 }
-
+nav ul li {
+    display: inline;
+    padding: 5px 10px;
+    border-left: 1px solid #FFFFFF;
+    font-size: 20pt;
+}
+nav ul li:first-child {
+    border-left: none;
+}
+nav ul li:last-child {
+    border-right: none;
+}
+li.selected {
+    color: #aaaaaa;
+}
+hr {
+    border: 1px solid #FFFFFF;
+    margin: 0;
+}
+.App-nav {
+    width: 100%;
+    background-color: #333333;
+}
+nav ul li a, .App-header a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+nav ul li a:hover {
+    text-decoration: underline;
+    color: #918fff;
+}
+nav ul li a:visited, .App-header a:visited {
+    color: #FFFFFF;
+}
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    text-align: center;
 }
-
-.App-link {
-  color: #61dafb;
+.App-header span {
+    font-size: 17pt;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-header h1 {
+    font-size: 25pt;
+}
+.App-header a:hover {
+    text-decoration: underline;
+}
+.App-body a {
+    color: #419adc;
+    text-decoration: none;
+}
+.App-body a:hover {
+    text-decoration: underline;
+}
+.App-body a:visited {
+    color: #419adc;
+}
+.App-body h1 {
+    font-size: 22.5pt;
+}
+.App-body p, .App-body li {
+    font-size: 15pt;
+}
+footer {
+    text-align: center;
+    width: 100%;
+    background-color: #000000;
+}
+.about section {
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    width: 70vw;
+    padding: 5px 5px;
+    margin: 5px 0;
+}
+.sticky {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
