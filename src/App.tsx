@@ -127,6 +127,42 @@ export function About() {
         </div>
     );
 }
+export function Contact() {
+    return (
+        <div className="App">
+            <TopHeader />
+            <div className="App-nav">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/projects">My Projects</a></li>
+                    <li className={"selected"}>Contact Me</li>
+                    <li><a href="/blog">Blog and Tutorials</a></li>
+                </ul>
+            </nav>
+            <hr />
+            </div>
+            <div className="App-body about">
+                <h1>Contact Me</h1>
+                <p>Here are some ways you can contact me!</p>
+                <section>
+                    <h1>
+                        E-MAIL: <a href={"mailto:nathan-lee1111@outlook.com"}>nathan-lee1111@outlook.com</a>
+                    </h1>
+                    <p>Please email me for business inquiries only.</p>
+                </section>
+                <section>
+                    <h1>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                        Discord: <a>@theaviationbee</a>
+                    </h1>
+                    <p><b>The Discord is NOT for business inquiries! Please email me for official business</b></p>
+                </section>
+            </div>
+        </div>
+    );
+}
 export function NotFound() {
     return (
         <div className="App">

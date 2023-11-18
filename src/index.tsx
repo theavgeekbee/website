@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import {About, App, NotFound, Projects, WIP} from './App';
+import {About, App, Contact, NotFound, Projects, WIP} from './App';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
@@ -10,7 +10,7 @@ const router = createBrowserRouter(
         {path: '/', element: <App />},
         {path: '/about', element: <About />},
         {path: '/projects', element: <Projects />},
-        {path: '/contact', element: <WIP />},
+        {path: '/contact', element: <Contact />},
         {path: '/blog', element: <WIP />},
         {path: '/*', element: <NotFound />},
     ]
