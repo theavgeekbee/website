@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-function TopHeader() {
+import {ArticleDisplay} from "./BlogArticles";
+export function TopHeader() {
     return (
         <>
             <div className="App-header">
@@ -219,11 +220,48 @@ export function Projects() {
                         Github repository linked above. If you would like to read about how I made this library and how it works, check out my <a href={"/blog"} target={"/"}>blog</a>!
                     </p>
                 </section>
+                <section>
+                    <h1>
+                        <a href={"https://github.com/InfinitePower563/obfuscator"} target={"/"}>
+                            Obfuscator
+                        </a>
+                    </h1>
+                    <p>
+                        <b>Obfuscator</b> is a Java program I made to obfuscate Java code. It's very rudimentary, but it works.
+                        Originally, I made this program to obfuscate my code at school so people stop asking me for my AP Computer Science answers.
+                        The program is made for JCreator and Java 8, which is the platform that my APCS class uses.
+                        If you would like to use this program, check out the Github repository linked above.
+                    </p>
+                </section>
             </div>
             <Footer />
         </div>
     )
 }
+export function BlogAndArticles() {
+    return (
+        <div className="App">
+            <TopHeader />
+            <div className="App-nav">
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/projects">My Projects</a></li>
+                        <li><a href="/contact">Contact Me</a></li>
+                        <li className={"selected"}>Blog and Tutorials</li>
+                    </ul>
+                </nav>
+                <hr />
+            </div>
+            <div className={"App-body blog"}>
+                {ArticleDisplay()}
+            </div>
+        </div>
+    );
+}
+
+//eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function WIP() {
     return (
         <div className="App">

@@ -98,3 +98,44 @@ nav ul li a:visited, .App-header a:visited {
 .App-content {
     flex: 1 0 auto;
 }
+
+select {
+    background-color: #333333;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15pt;
+}
+.article {
+    width: 80vw;
+}
+.code-block {
+    width: 60vw;
+    background-color: #333333;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+}
+code {
+    font-family: 'Source Code Pro', monospace;
+    color: #419adc;
+    padding: 0 5px;
+}
+.searchBar {
+    width: 60vw;
+    background-color: #333333;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 15pt;
+    font-family: 'Source Code Pro', monospace;
+}
+.articleShort {
+     border-radius: 10px;
+     border: 1px solid #ffffff;
+     width: 70vw;
+     padding: 5px 5px;
+     margin: 5px 0;
+ }

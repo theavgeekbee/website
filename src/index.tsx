@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import {About, App, Contact, NotFound, Projects, WIP} from './App';
+import {About, App, BlogAndArticles, Contact, NotFound, Projects} from './App';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {TextRendererArticle} from "./articles/TextRenderer";
 
 const router = createBrowserRouter(
     [
@@ -11,8 +12,10 @@ const router = createBrowserRouter(
         {path: '/about', element: <About />},
         {path: '/projects', element: <Projects />},
         {path: '/contact', element: <Contact />},
-        {path: '/blog', element: <WIP />},
+        {path: '/blog', element: <BlogAndArticles />},
+        {path: '/blog/text-renderer', element: <TextRendererArticle />},
         {path: '/*', element: <NotFound />},
+        {path: '/blog/*', element: <NotFound />}
     ]
 );
 const root = ReactDOM.createRoot(
