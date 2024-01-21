@@ -255,6 +255,7 @@ export function BlogAndArticles() {
                 <hr />
             </div>
             <div className={"App-body blog"}>
+                <h1>There are more blogs to come! Keep a lookout for more!</h1>
                 {ArticleDisplay()}
             </div>
         </div>

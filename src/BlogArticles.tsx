@@ -42,6 +42,13 @@ function updateArticleList() {
     }
     searchResult.innerHTML = elementsToDisplay.join("");
 }
+function showAllArticles() {
+    return (
+        <>
+            <TextRendererArticleShort />
+        </>
+    )
+}
 function searchBar() {
     return (
         <div>
@@ -54,6 +61,7 @@ export function ArticleDisplay() {
         <div>
             {searchBar()}
             <div id="searchResult" className={"about"}>
+                {showAllArticles()}
             </div>
         </div>
     );
