@@ -66,14 +66,14 @@ nav ul li a:visited, .App-header a:visited {
 .App-header a:hover {
     text-decoration: underline;
 }
-.App-body a {
+a {
     color: #419adc;
     text-decoration: none;
 }
-.App-body a:hover {
+a:hover {
     text-decoration: underline;
 }
-.App-body a:visited {
+a:visited {
     color: #419adc;
 }
 .App-body h1 {

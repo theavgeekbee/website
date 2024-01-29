@@ -5,6 +5,7 @@ import {About, App, BlogAndArticles, Contact, NotFound, Projects} from './App';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {TextRendererArticle} from "./articles/TextRenderer";
+import {TamuHack24} from "./articles/TamuHack24";
 
 const router = createBrowserRouter(
     [
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
         {path: '/contact', element: <Contact />},
         {path: '/blog', element: <BlogAndArticles />},
         {path: '/blog/text-renderer', element: <TextRendererArticle />},
+        {path: '/blog/tamu2024', element: <TamuHack24 />},
         {path: '/*', element: <NotFound />},
         {path: '/blog/*', element: <NotFound />}
     ]

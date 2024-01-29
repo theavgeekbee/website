@@ -118,7 +118,7 @@ export function About() {
                 </section>
                 <section>
                     <h2>High School Student</h2>
-                    <p>I'm also a student a Cinco Ranch Junior High. I'm currently in 9th grade.</p>
+                    <p>I'm also a student a Cinco Ranch High School. I'm currently in 9th grade.</p>
                     <p>I'm also part of the CRHS Orchestra as well!</p>
                     <p><br />Read more about my academic and musical journey on my <a href="/blog" target="/">blog</a>!</p>
                 </section>
