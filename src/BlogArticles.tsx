@@ -1,6 +1,7 @@
 import React from "react";
 import {TextRendererArticleShort, TextRendererArticleTags} from "./articles/TextRenderer";
 import ReactDOMServer from 'react-dom/server';
+import {Tamu2024Short, TamuHack24Tags} from "./articles/TamuHack24";
 
 function areWordsClose(word1:string, word2:string) {
     let difference = 0;
@@ -40,12 +41,20 @@ function updateArticleList() {
             break;
         }
     }
+    for (let i = 0; i < TamuHack24Tags().length; i++) {
+        let tag = TamuHack24Tags()[i];
+        if (areWordsClose(tag.toLowerCase(), searchInputValue)) {
+            elementsToDisplay.push(ReactDOMServer.renderToString(<Tamu2024Short />));
+            break;
+        }
+    }
     searchResult.innerHTML = elementsToDisplay.join("");
 }
 function showAllArticles() {
     return (
         <>
             <TextRendererArticleShort />
+            <Tamu2024Short />
         </>
     )
 }
