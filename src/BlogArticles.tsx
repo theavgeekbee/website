@@ -2,6 +2,7 @@ import React from "react";
 import {TextRendererArticleShort, TextRendererArticleTags} from "./articles/TextRenderer";
 import ReactDOMServer from 'react-dom/server';
 import {Tamu2024Short, TamuHack24Tags} from "./articles/TamuHack24";
+import {CryptoShort, CryptoTags} from "./articles/Crypto";
 
 function areWordsClose(word1:string, word2:string) {
     let difference = 0;
@@ -48,6 +49,13 @@ function updateArticleList() {
             break;
         }
     }
+    for (let i = 0; i < CryptoTags().length; i++) {
+        let tag = CryptoTags()[i];
+        if (areWordsClose(tag.toLowerCase(), searchInputValue)) {
+            elementsToDisplay.push(ReactDOMServer.renderToString(<CryptoShort />));
+            break;
+        }
+    }
     searchResult.innerHTML = elementsToDisplay.join("");
 }
 function showAllArticles() {
@@ -55,6 +63,7 @@ function showAllArticles() {
         <>
             <TextRendererArticleShort />
             <Tamu2024Short />
+            <CryptoShort />
         </>
     )
 }
