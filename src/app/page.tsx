@@ -1,113 +1,128 @@
-import Image from "next/image";
+'use client';
+
+import React, {useEffect} from "react";
+import {AppLoader, delay, Header} from "@/tools";
+
+function App() {
+    let [content, setContent] = React.useState(["user@home: ~$ cd /proj"]);
+    let [state, setState] = React.useState(0);
+    let [running, setRunning] = React.useState(true);
+
+    useEffect(() => {
+        async function exec() {
+            if (!running) return;
+            function wrapGreenText(text: string) {
+                return `<span class="text-green-500">${text}</span>`;
+            }
+            // make the words "Compiling" and "Finished" green
+            const newContent = [
+                `user@home: proj$ cargo build --release`, // type 21 characters, stages 0 - 20
+                `   ${wrapGreenText("Compiling")} proj v0.1.0 (/proj)`, // type 0 characters, stage 21
+                `   ${wrapGreenText("Finished")} release [optimized] target(s) in 1.3s`, // type 0 characters, stage 22
+                `user@home: proj$ ./target/release/proj`, // type 21 characters , stages 23 - 43
+            ];
+
+            if (state === 0) {
+                await delay(500);
+                setContent([...content, "user@home: proj$ "]);
+            }
+            if (state > 0 && state <= 21) {
+                await delay(25);
+                // set the last element of content
+                const newContent = content.slice(0, content.length - 1);
+                newContent.push(`user@home: proj$ ${"cargo build --release".slice(0, state)}`);
+                setContent(newContent);
+            }
+            if (state === 22) {
+                await delay(500);
+                setContent([...content, newContent[1]]);
+            }
+            if (state === 23) {
+                await delay(1300);
+                setContent([...content, newContent[2]]);
+            }
+            if (state === 24) {
+                await delay(500);
+                setContent([...content, "user@home: proj$ "]);
+            }
+            if (state > 24 && state <= 44) {
+                await delay(25);
+                const newContent = content.slice(0, content.length - 1);
+                newContent.push(`user@home: proj$ ${"./target/release/proj".slice(0, state - 23)}`);
+                setContent(newContent);
+            }
+            if (state >= 45) {
+                const updater = [
+                    `Hello! Welcome to my website!`, // 29 characters, states 45 - 74
+                    `My name's Nathan, I'm a software engineer and full time high school student.`, // 76 characters, states 75 to 151
+                    `I have many activities that I enjoy doing. I'll list some here.`, // 63 characters, states 152 to 215
+                    ` → Programming <br /> → Flying flight simulators <br /> → Playing video games`, // 76 characters, states 216 to 292
+                    `I also have a few projects I'm working on, and some that are already completed.`, // 79 characters, states 293 to 372
+                    `#navbar#` // 43 characters, states 373 - 416
+                ];
+                if (state === 45) setContent([...content, " ","H"]);
+                if (state > 45 && state <= 74) {
+                    await delay(5);
+                    const newContent = content.slice(0, content.length - 1);
+                    newContent.push(updater[0].slice(0, state - 45));
+                    setContent(newContent);
+                }
+                if (state === 75) setContent([...content, "M"]);
+                if (state > 75 && state <= 151) {
+                    await delay(5);
+                    const newContent = content.slice(0, content.length - 1);
+                    newContent.push(updater[1].slice(0, state - 75));
+                    setContent(newContent);
+                }
+                if (state === 152) setContent([...content, "I"]);
+                if (state > 152 && state <= 215) {
+                    await delay(5);
+                    const newContent = content.slice(0, content.length - 1);
+                    newContent.push(updater[2].slice(0, state - 152));
+                    setContent(newContent);
+                }
+                if (state === 216) setContent([...content, " "]);
+                if (state > 216 && state <= 292) {
+                    await delay(5);
+                    const newContent = content.slice(0, content.length - 1);
+                    newContent.push(updater[3].slice(0, state - 216));
+                    setContent(newContent);
+                }
+                if (state === 293) setContent([...content, "Y"]);
+                if (state > 293 && state <= 372) {
+                    await delay(5);
+                    const newContent = content.slice(0, content.length - 1);
+                    newContent.push(updater[4].slice(0, state - 293));
+                    setContent(newContent);
+                }
+                if (state === 373) setContent([...content, "Y"]);
+                if (state > 373 && state <= 416) {
+                    await delay(5);
+                    const newContent = content.slice(0, content.length - 1);
+                    newContent.push(updater[5].slice(0, state - 373));
+                    setContent(newContent);
+                }
+            }
+
+            setState(state + 1);
+            if (state === 431) {
+                setRunning(false);
+            }
+        }
+        exec().then(r => r);
+    }, [content, running, state]);
+
+    return (
+        <AppLoader content={content}/>
+    );
+}
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    return (
+        <div className={"App"}>
+            <Header/>
+            <hr />
+            <App />
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    )
 }
