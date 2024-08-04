@@ -6,9 +6,12 @@ export function AppLoader(props: { content: string[] }) {
     return (
         <div className={"App-content w-screen"}>
             {props.content.map((value, index) => {
-                if (value === "#navbar#") {
+                if (value.startsWith("#navbar#")) {
                     return (<div key={index}>
-                        <Link href={"/projects"}>
+                        <Link href={"/"} className={"links"}>
+                            <button>Home</button>
+                        </Link>
+                        <Link href={"/projects"} className={"links"}>
                             <button>Projects</button>
                         </Link>
                         &nbsp;
@@ -20,24 +23,24 @@ export function AppLoader(props: { content: string[] }) {
                         &nbsp;
                     </div>)
                 }
-                if (value.startsWith("##linkto:")) {
+                if (value.startsWith("##linkto:") && value.split(":").length === 4) {
+                    console.log("found link: " + value)
                     const links = value.split(":");
                     return (
                         <div key={index}>
-                            <Link key={index} href={links[1]}>
-                                <button>{"https://" + links[2]}</button>
+                            <Link key={index} href={"https://" + links[1]} target={"_blank"}>
+                                <button>{links[2]}</button>
                             </Link>
                         </div>
                     );
                 }
-                if (value.startsWith("##photo:")) {
+                if (value.startsWith("##photo:") && value.split(":").length === 6) {
                     const links = value.split(":");
+                    console.log("found photo: " + value)
                     return (
                         <div key={index}>
-                            <Link key={index} href={links[1]}>
-                                <Image src={links[2]} alt={links[3]} className={"App-photo"} width={parseInt(links[4])}
-                                       height={parseInt(links[5])} fill={false}/>
-                            </Link>
+                                <Image src={links[1]} alt={links[2]} className={"App-photo"} width={parseInt(links[3])}
+                                       height={parseInt(links[4])} fill={false}/>
                         </div>
                     );
                 }
@@ -51,10 +54,10 @@ export function AppLoader(props: { content: string[] }) {
 
 export function Header() {
     return (
-        <div className={"App-header flex w-screen flex-row justify-center"}>
-            <span className={"text-center pr-10 align-middle"}>made with ❤</span>
-            <Link href={"https://github.com/theavgeekbee"}>
-                <Image src={"/github-mark-white.png"} alt={"Github"} className={"App-github-image mb-1"} width={23}
+        <div className={"App-header"}>
+            <span className={"App-header-text"}>made with ❤</span>
+            <Link href={"https://github.com/theavgeekbee/website"} target={"_blank"}>
+                <Image src={"/github-mark-white.png"} alt={"Github"} className={"App-github-image"} width={23}
                        height={23} fill={false}/>
             </Link>
         </div>

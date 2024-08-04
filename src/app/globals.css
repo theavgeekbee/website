@@ -12,6 +12,7 @@ html {
 .App-console-line {
     font-size: large;
 }
+
 button {
     background: none;
     color: cornflowerblue;
@@ -32,4 +33,21 @@ ul {
 li {
     list-style-type: circle;
     display:list-item;
+}
+.links {
+    margin-left: 5px;
+}
+.App-header {
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    justify-content: center;
+}
+.App-header-text {
+    text-align: center;
+    padding-right: 2.5rem;
+    vertical-align: middle;
+}
+.App-github-image {
+    margin-bottom: 5px;
 }

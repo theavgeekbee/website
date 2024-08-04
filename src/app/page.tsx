@@ -60,7 +60,7 @@ function App() {
                     `I also have a few projects I'm working on, and some that are already completed.`, // 79 characters, states 293 to 372
                     `#navbar#` // 43 characters, states 373 - 416
                 ];
-                if (state === 45) setContent([...content, " ","H"]);
+                if (state === 45) setContent([...content, "<br />", "H"]);
                 if (state > 45 && state <= 74) {
                     await delay(5);
                     const newContent = content.slice(0, content.length - 1);
