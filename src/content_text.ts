@@ -22,9 +22,6 @@ export default class ContentText {
     public getDelayTime(): number {
         return this.delayTime;
     }
-    public stateEnd(state: number): number {
-        return this.block ? state : state + this.text.length;
-    }
     public isSameLine(): boolean {
         return this.sameLine;
     }

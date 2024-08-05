@@ -1,32 +1,9 @@
 'use client'
-import React, {useCallback, useEffect} from "react";
+import React, {useEffect} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ContentText from "@/content_text";
 
-const maxState = function (texts: ContentText[]) {
-    let sum = 0;
-    for (let i = 0; i < texts.length; i++) {
-        if (texts[i].isBlock()) {
-            sum++;
-        } else {
-            sum += texts[i].getText().length;
-        }
-    }
-    return sum;
-};
-
-const getStartState = function (texts: ContentText[], index: number) {
-    let sum = 0;
-    for (let i = 0; i < index; i++) {
-        if (texts[i].isBlock()) {
-            sum++;
-        } else {
-            sum += texts[i].getText().length;
-        }
-    }
-    return sum;
-}
 export const delays = {
     very_short: 5,
     short: 25,
@@ -116,104 +93,6 @@ export function IApp2(props: { texts: ContentText[], starting_text: string }) {
     );
 }
 
-/**
- * @deprecated by IApp2
- */
-export function IApp(props: { texts: ContentText[], starting_text: string }) {
-
-    let [content, setContent] = React.useState([props.starting_text]);
-    let [state, setState] = React.useState(0);
-    let [running, setRunning] = React.useState(true);
-
-    const displayNextState = useCallback(async (stateFrom: number, text: ContentText) => {
-        if (state < stateFrom || state > text.stateEnd(stateFrom)) return;
-        await delay(text.getDelayTime());
-        if (text.isBlock()) {
-            setContent([...content, text.getText()]);
-            setState(state + 1);
-            return;
-        }
-        const newContent = content.slice(0, content.length - 1);
-        newContent.push(content[content.length - 1] + text.getText().charAt(state - stateFrom));
-        if (!text.isSameLine() && state === text.stateEnd(stateFrom)) {
-            console.log("adding new line")
-            newContent.push("");
-        }
-        setContent(newContent);
-        setState(state + 1)
-    }, [content, state]);
-
-    useEffect(() => {
-        async function exec() {
-            if (!running) return;
-
-            for (let i = 0; i < props.texts.length; i++) {
-                await displayNextState(getStartState(props.texts, i), props.texts[i]);
-            }
-
-            if (state === maxState(props.texts)) {
-                setRunning(false);
-            }
-        }
-
-        exec().then(r => r);
-    }, [content, running, displayNextState, state, props.texts]);
-
-    return (
-        <AppLoader texts={content}/>
-    );
-}
-/**
- * @deprecated by IApp2
- */
-export function AppLoader(props: { texts: string[] }) {
-    return (
-        <div className={"App-content w-screen"}>
-            {props.texts.map((value: string, index) => {
-                if (value.startsWith("#navbar#")) {
-                    return (<div key={index}>
-                        <Link href={"/"} className={"links"}>
-                            <button>Home</button>
-                        </Link>
-                        <Link href={"/projects"} className={"links"}>
-                            <button>Projects</button>
-                        </Link>
-                        &nbsp;
-                        <button>About</button>
-                        &nbsp;
-                        <button>Contact/Socials</button>
-                        &nbsp;
-                        <button>Blog</button>
-                        &nbsp;
-                    </div>)
-                }
-                if (value.includes("##linkto:") && value.split(":").length === 4) {
-                    const links = value.split(":");
-                    return (
-                        <div key={index}>
-                            <Link key={index} href={"https://" + links[1]} target={"_blank"}>
-                                <button>{links[2]}</button>
-                            </Link>
-                        </div>
-                    );
-                }
-                if (value.includes("##photo:") && value.split(":").length === 6) {
-                    const links = value.split(":");
-                    return (
-                        <div key={index}>
-                            <Image src={links[1]} alt={links[2]} className={"App-photo"} width={parseInt(links[3])}
-                                   height={parseInt(links[4])} fill={false}/>
-                        </div>
-                    );
-                }
-
-                return <div key={index} className={"App-console-line"}
-                            dangerouslySetInnerHTML={{__html: value}}/>;
-            })}
-        </div>
-    );
-}
-
 export function Header() {
     return (
         <div className={"App-header"}>
@@ -224,11 +103,4 @@ export function Header() {
             </Link>
         </div>
     );
-}
-
-/**
- * @deprecated by IApp2
- */
-export function delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
