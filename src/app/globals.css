@@ -9,9 +9,6 @@ html {
 .App {
     font-family: monospace;
 }
-.App-console-line {
-    font-size: large;
-}
 
 button {
     background: none;
@@ -34,7 +31,7 @@ li {
     list-style-type: circle;
     display:list-item;
 }
-.links {
+button {
     margin-left: 5px;
 }
 .App-header {
@@ -50,4 +47,31 @@ li {
 }
 .App-github-image {
     margin-bottom: 5px;
+}
+.App-console-line {
+    white-space: pre-wrap;
+    margin-left: 5px;
+    text-wrap: wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: large;
+}
+h1 {
+    font-size: xx-large;
+    margin: 0;
+}
+h2 {
+    font-size: x-large;
+}
+h1, h2 {
+    font-family: "Courier New", Courier, monospace;
+}
+.wip {
+    border: 2px solid darkred;
+    color: white;
+}
+.wip:hover {
+    background-color: lightgray;
+    border: 2px solid darkred;
+    color: black;
 }
