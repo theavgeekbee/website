@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    background-color: #111113;
+    color: white;
+}
+.App {
+    font-family: monospace;
+}
+
+button {
+    background: none;
+    color: cornflowerblue;
+    font-size: x-large;
+    border: 1px dashed cornflowerblue;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+button:hover {
+    border: 1px solid cornflowerblue;
+    background-color: cornflowerblue;
+    color: white;
+}
+ul {
+    list-style: circle;
+    margin-left: 5px;
+}
+li {
+    list-style-type: circle;
+    display:list-item;
+}
+button {
+    margin-left: 5px;
+}
+.App-header {
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    justify-content: center;
+}
+.App-header-text {
+    text-align: center;
+    padding-right: 2.5rem;
+    vertical-align: middle;
+}
+.App-github-image {
+    margin-bottom: 5px;
+}
+.App-console-line {
+    white-space: pre-wrap;
+    margin-left: 5px;
+    text-wrap: wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: large;
+}
+h1 {
+    font-size: xx-large;
+    margin: 0;
+}
+h2 {
+    font-size: x-large;
+}
+h1, h2 {
+    font-family: "Courier New", Courier, monospace;
+}
+.wip {
+    border: 2px solid darkred;
+    color: white;
+}
+.wip:hover {
+    background-color: lightgray;
+    border: 2px solid darkred;
+    color: black;
+}
+a:hover {
+    text-decoration: underline;
+    color: cornflowerblue;
+}
