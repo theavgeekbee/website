@@ -6,7 +6,7 @@ import ContentText from "@/content_text";
 
 const texts = [
     new ContentText("<br />user@home: proj$ ", true, delays.short),
-    new ContentText("cargo build --release", false, delays.short),
+    new ContentText("cargo build --release", false, delays.short, true),
     new ContentText(`    <span class="text-green-500">Compiling</span> proj v0.1.0 (/proj)`, true, delays.short),
     new ContentText(`    <span class="text-green-500">Finished</span> release [optimized] target(s) in 0.7s`, true, delays.long),
     new ContentText("user@home: proj$ ", true, delays.short),
