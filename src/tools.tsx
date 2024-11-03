@@ -3,6 +3,7 @@ import React, {useEffect} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ContentText from "@/content_text";
+import {marked} from "marked";
 
 export const delays = {
     very_short: 5,
@@ -87,7 +88,7 @@ export function IApp2(props: { texts: ContentText[], starting_text: string }) {
     return (
         <div className={"App"}>
             <Header/>
-            <hr />
+            <hr/>
             <div className={"App-console-line"} dangerouslySetInnerHTML={{__html: displayedText}}/>
         </div>
     );
@@ -103,4 +104,26 @@ export function Header() {
             </Link>
         </div>
     );
+}
+
+export async function parseMarkdownText(text: string): Promise<ContentText[]> {
+    return (await marked(text))
+        .split('\n')
+        .map(line => new ContentText(line, false, delays.very_short));
+}
+
+export function BlogPage(props: { content: string }) {
+    const [texts, setTexts] = React.useState<ContentText[] | null>(null);
+
+    useEffect(() => {
+        parseMarkdownText(props.content).then((parsed) => {
+            setTexts(parsed);
+        });
+    }, [props.content]);
+
+    if (texts === null) {
+        return (<div>Loading...</div>);
+    }
+
+    return (<IApp2 texts={texts} starting_text={"user@home: proj\\target\\release$ ./proj --blog"}/>);
 }
