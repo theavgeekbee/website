@@ -79,3 +79,7 @@ a:hover {
     text-decoration: underline;
     color: cornflowerblue;
 }
+img {
+    max-height: 50vh;
+    width: auto;
+}
