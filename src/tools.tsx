@@ -125,5 +125,8 @@ export function BlogPage(props: { content: string }) {
         return (<div>Loading...</div>);
     }
 
-    return (<IApp2 texts={texts} starting_text={"user@home: proj\\target\\release$ ./proj --blog"}/>);
+    return (<IApp2
+        texts={[...texts, new ContentText("##navbar##", false, 5)]}
+        starting_text={"user@home: proj\\target\\release$ ./proj --blog"}
+    />);
 }
