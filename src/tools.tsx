@@ -42,7 +42,7 @@ export function IApp2(props: { texts: ContentText[], starting_text: string }) {
             }
             if (texts[i].getText().includes("#navbar#")) {
                 texts[i] = new ContentText(
-                    `<div><a href="/" class="links"><button>Home</button></a><a href="/projects" class="links"><button>Projects</button></a><a href="/contact" class="links"><button>Contact/Socials</button></a><button class="wip">Blog</button></div>`,
+                    `<div><a href="/" class="links"><button>Home</button></a><a href="/projects" class="links"><button>Projects</button></a><a href="/contact" class="links"><button>Contact/Socials</button><a href="https://dndw.nwlee.tech" class="links" target="_blank"><button>Blog &#8599;</button></a></div>`,
                     texts[i].isBlock(),
                     texts[i].getDelayTime(),
                     texts[i].isSameLine()
