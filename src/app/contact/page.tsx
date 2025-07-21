@@ -7,7 +7,6 @@ const info = [
     new ContentText("<h1>Contact Me</h1>", false, delays.very_short),
     new ContentText("<h2> → <a href='https://x.com/theavgeekbee' target='_blank'>Twitter/X: @theavgeekbee</a></h2>", false, delays.very_short),
     new ContentText("<h2> → <a href='https://www.instagram.com/theavgeekbee/' target='_blank'>Instagram: @theavgeekbee</a></h2>", false, delays.very_short),
-    new ContentText("<h2> → <a href='#'>Discord: @.flagless</a>", false, delays.very_short),
     new ContentText("<h2> → <a href='mailto:me@nwlee.tech'>Email: me@nwlee.tech</a></h2>", false, delays.very_short),
     new ContentText("##navbar##", false, delays.very_short)
 ];

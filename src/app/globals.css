@@ -107,3 +107,7 @@ img {
     max-height: 50vh;
     width: auto;
 }
+
+hr {
+    margin: 10px 0;
+}
