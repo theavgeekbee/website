@@ -13,9 +13,12 @@ const texts = [
     new ContentText("./target/release/proj", false, delays.short, true),
     new ContentText("<br />Hello! Welcome to my website!", false, delays.very_short),
     new ContentText("My name's Nathan, I'm a full stack developer and high school student.", false, delays.very_short),
-    new ContentText("I have many activities that I enjoy doing. I'll list some here.<br/>", false, delays.very_short),
-    new ContentText(" → Programming <br /> → Flying flight simulators <br /> → Playing video games <br /> → Day trading<br />", false, delays.very_short),
-    new ContentText("I also have a few projects I'm working on, and some that are already completed.", false, delays.very_short),
+    new ContentText("I have many activities that I enjoy doing. I'll list some here.", false, delays.very_short),
+    new ContentText("<br /> → Programming", false, delays.very_short),
+    new ContentText(" → Flying flight simulators", false, delays.very_short),
+    new ContentText(" → Playing video games", false, delays.very_short),
+    new ContentText(" → Day trading", false, delays.very_short),
+    new ContentText("<br />I also have a few projects I'm working on, and some that are already completed.", false, delays.very_short),
     new ContentText("#navbar#", true, delays.very_short),
 ];
 
