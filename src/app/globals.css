@@ -16,6 +16,7 @@ html {
 }
 .App {
     font-family: monospace;
+    overflow-x: hidden;
 }
 
 button {
@@ -93,5 +94,10 @@ img {
 }
 
 hr {
-    margin: 10px 0;
+    margin: 10px 0 !important;
+    width: 100vw;
+    left: 0;
+    position: relative;
+    color: white;
+    height: 2px;
 }
