@@ -11,14 +11,26 @@ const info = [
     new ContentText("SimpleGrade.png 31.98kB ", false, delays.short),
     new ContentText("##link:extern:github.com/theavgeekbee/simplegrade:Github:", false, delays.very_short),
     new ContentText("<hr />", false, delays.very_short),
+
     new ContentText("<h2> → SigmaTerminal + FFS Markets</h2>", false, delays.very_short),
     new ContentText("I made a futures market simulator called FFS Markets. It includes a live tick stream, somewhat realistic candlestick data, and a live order book simulation.", false, delays.very_short),
     new ContentText("I then served this data to a React app called SigmaTerminal via Websocket. It's heavily inspired by Tradovate and Ninjatrader's interfaces.", false, delays.very_short),
     new ContentText("I also included paper trading functionality.", false, delays.very_short),
-    new ContentText("<##photo:/SigmaTerminal.png:The SigmaTerminal trading terminal:1859:916:", false, delays.very_short),
+    new ContentText("##photo:/SigmaTerminal.png:The SigmaTerminal trading terminal:1859:916:", false, delays.very_short),
     new ContentText("SigmaTerminal.png 151.06kB ", false, delays.short),
     new ContentText("##link:extern:x.com/theavgeekbee/status/1947341801297162684:Twitter/X:", false, delays.very_short),
     new ContentText("<hr />", false, delays.very_short),
+
+    new ContentText("<h2> → Office Click Clack</h2>", false, delays.very_short),
+    new ContentText(`OCC is a game I made for the Daydream Game Jam hosted by Hack Club.`, false, delays.very_short),
+    new ContentText(`It's a typing game where you start losing the ability to type keys. You then need to remap the keys in order to type them, which fits the "sacrifice" theme of the game jam.`, false, delays.very_short),
+    new ContentText(`We also won first place, wihch is also cool too!`, false, delays.very_short),
+    new ContentText("##photo:/occ.png:The Office Click Clack Game:1306:742:", false, delays.very_short),
+    new ContentText("occ.png 42.65 kB", false, delays.very_short),
+    new ContentText("##link:extern:github.com/autowattage/daydream-dfw-game:Github:", false, delays.very_short),
+    new ContentText("##link:extern:theavgeekbee.itch.io/office-click-clack:itch.io:", false, delays.very_short),
+    new ContentText("<hr />", false, delays.very_short),
+
     new ContentText("<h2> → More to come later!</h2>", false, delays.very_short),
     new ContentText("#navbar#", false, delays.very_short),
 ];
